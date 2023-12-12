@@ -16,7 +16,7 @@ await writeToFile('./data1.json', 'wx')
 
 /**
  *
- * @param {import('fs').PathLike | import('fs').FileHandle} path
+ * @param {import('fs').PathLike | import('fs/promises').FileHandle} path
  * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
  * @param {import('fs').Mode | undefined} mode
  */
@@ -50,7 +50,7 @@ async function writeToFile(path, flags, mode) {
 
 /**
  *
- * @param {PathLike | FileHandle} path
+ * @param {import('fs').PathLike | import('fs/promises').FileHandle} path
  * @param {*} object
  */
 export async function writeDataToFile(path, object) {
