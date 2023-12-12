@@ -16,7 +16,7 @@ await writeToFile('./data3.json', '')
  * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
  * @param {import('fs').Mode | null | undefined} mode
  */
-async function writeToFile(path, flags, mode) {
+async function writeToFile(path, { flags, mode }) {
   open(path, flags ?? 'wx', mode ?? 0o666, (err, fd) => {
     if (err) {
       if (err.code === 'EEXIST') {
@@ -37,18 +37,29 @@ async function writeToFile(path, flags, mode) {
         ip_address: '181.147.69.70',
       })
     } finally {
-      close(fd, err => {
+      close(fd, (err) => {
         if (err) throw err
       })
     }
   })
 }
 
+// grab correct jsdoc types for writeFile from `fs`
+
+/**
+ *
+ * @param {import('fs').PathOrFileDescriptor} path
+ * @param {string | NodeJS.ArrayBufferView} object
+ */
 export function writeDataToFile(path, object) {
-  writeFile(path, JSON.stringify(object), err => {
-    if (err) {
-      console.error(err)
-    }
-    console.log('The file has been saved!')
-  })
+  writeFile(
+    path,
+    typeof object === 'object' ? JSON.stringify(object) : object,
+    (err) => {
+      if (err) {
+        console.error(err)
+      }
+      console.log('The file has been saved!')
+    },
+  )
 }
