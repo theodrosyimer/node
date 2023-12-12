@@ -16,7 +16,7 @@ console.log(join(process.env.NODE_PATH ?? '', 'data.json'))
 
 readFromJsonFile(
   join(process.env.NODE_PATH ?? '', 'data.json'),
-  fileContent => {
+  (fileContent) => {
     console.log(fileContent)
   },
 )
