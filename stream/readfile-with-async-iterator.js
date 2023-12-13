@@ -3,10 +3,11 @@ import { fileURLToPath } from 'node:url'
 
 export async function readStream(filePath) {
   let chunks = ''
-  const rs = createReadStream(filePath)
+  // set the encodings like this (otherwise it has a raw buffer type):
+  const rs = createReadStream(filePath, 'utf-8')
 
-  // need to set the encodings otherwise it has a raw buffer type
-  rs.setEncoding('utf8')
+  // or like this:
+  // rs.setEncoding('utf8')
 
   for await (const chunk of rs) {
     chunks += chunk
