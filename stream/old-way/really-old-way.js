@@ -1,8 +1,6 @@
 import { Readable } from 'node:stream'
-// Stream and generator used together
-// Convert array and objects using `Readable.from()`
-// Old way
 
+// Old way 1
 const array = []
 for (let i = 1; i < 1025; i++) {
   array.push(i)
