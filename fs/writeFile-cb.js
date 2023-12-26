@@ -13,11 +13,10 @@ await writeToFile('./data3.json', '')
 /**
  *
  * @param {import('fs').PathLike | import('fs').FileHandle} path
- * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
- * @param {import('fs').Mode | null | undefined} mode
+ * @param {{ flags?: 'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'; mode?: import('fs').Mode | null | undefined }} options flags default: 'wx', mode default: 0o666
  */
-async function writeToFile(path, { flags, mode }) {
-  open(path, flags ?? 'wx', mode ?? 0o666, (err, fd) => {
+async function writeToFile(path, { flags = 'wx', mode = 0o666 }) {
+  open(path, flags, mode, (err, fd) => {
     if (err) {
       if (err.code === 'EEXIST') {
         console.error(`${path} already exists`)
@@ -48,12 +47,12 @@ async function writeToFile(path, { flags, mode }) {
 
 /**
  *
- * @param {import('fs').PathOrFileDescriptor} path
+ * @param {import('fs').PathOrFileDescriptor} pathOrFileDescriptor
  * @param {string | NodeJS.ArrayBufferView} object
  */
-export function writeDataToFile(path, object) {
+export function writeDataToFile(pathOrFileDescriptor, object) {
   writeFile(
-    path,
+    pathOrFileDescriptor,
     typeof object === 'object' ? JSON.stringify(object) : object,
     (err) => {
       if (err) {
