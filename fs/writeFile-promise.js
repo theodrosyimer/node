@@ -20,11 +20,11 @@ await writeToFile('./data1.json', 'wx')
  * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
  * @param {import('fs').Mode | undefined} mode
  */
-async function writeToFile(path, flags, mode) {
+async function writeToFile(path, flags = 'wx', mode = 0o666) {
   let filehandle
 
   try {
-    filehandle = await open(path, flags ?? 'wx', mode ?? 0o666)
+    filehandle = await open(path, flags, mode)
 
     await writeDataToFile(filehandle, {
       id: 11,
@@ -61,11 +61,11 @@ export async function writeDataToFile(path, object) {
   }
 }
 
-async function openToReadFile(filename, flags) {
+async function openToReadFile(filename, flags = 'r+') {
   let filehandle
 
   try {
-    filehandle = await open(filename, flags ?? 'r+')
+    filehandle = await open(filename, flags)
     const content = await filehandle.readFile({ encoding: 'utf8' })
     console.log(content)
   } catch (error) {
