@@ -19,7 +19,12 @@ const modulePath = fileURLToPath(import.meta.url)
 
 if (process.argv[1] === modulePath) {
   const filePath = process.argv[2] ?? modulePath
-  await readStream(filePath)
+
+  readStream(filePath).catch((err) => {
+    if (err instanceof Error) {
+      console.error(err)
+    }
+  })
 }
 
 export {}
