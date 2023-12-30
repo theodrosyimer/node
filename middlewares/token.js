@@ -18,7 +18,7 @@ export function tokenService(req, res) {
       email,
       role,
     },
-    process.env.JWT_SECRET
+    process.env.JWT_SECRET,
   )
 
   res.json({ accessToken })
