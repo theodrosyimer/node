@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Route controller
 try {
     customerService.addNew(req.body).then((result: Result) => {
