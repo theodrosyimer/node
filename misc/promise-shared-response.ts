@@ -1,4 +1,4 @@
-import {scheduler} from 'timers/promises'
+import { scheduler } from 'timers/promises'
 
 let count = 0
 
