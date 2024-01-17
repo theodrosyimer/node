@@ -20,7 +20,7 @@ const modulePath = fileURLToPath(import.meta.url)
 if (process.argv[1] === modulePath) {
   const filePath = process.argv[2] ?? modulePath
 
-  readStream(filePath).catch((err) => {
+  readStream(filePath).catch(err => {
     if (err instanceof Error) {
       console.error(err)
     }
