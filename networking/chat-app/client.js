@@ -16,7 +16,7 @@ const rl = readline.createInterface({
  * @param {import('node:tty').Direction} dir
  * @returns {Promise<void>}
  */
-const clearLine = (dir) =>
+const clearLine = dir =>
   new Promise((resolve, reject) => {
     output.clearLine(dir, () => {
       resolve()
@@ -63,7 +63,7 @@ const socket = net.createConnection(
 
       ask()
     })
-  }
+  },
 )
 
 socket.on('end', () => {
