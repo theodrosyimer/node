@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import net from 'net'
-import * as readline from 'node:readline/promises'
-import { stdin as input, stdout as output } from 'node:process'
-import { Readable } from 'stream'
+// import * as readline from 'node:readline/promises'
+// import { stdin as input, stdout as output } from 'node:process'
+// import { Readable } from 'stream'
 
-const rl = readline.createInterface({
-  input,
-  output,
-})
+// const rl = readline.createInterface({
+//   input,
+//   output,
+// })
 
 const server = net.createServer()
 
