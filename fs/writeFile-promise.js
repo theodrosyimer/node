@@ -1,7 +1,8 @@
-import { writeFile, open } from 'fs/promises'
+import { open, writeFile } from 'fs/promises'
 import { join } from 'path'
-import { isMainModule } from '../url/is-file-main-module.js'
+
 import { getFilename } from '../url/get-filename.js'
+import { isMainModule } from '../url/is-file-main-module-esm.js'
 
 console.log(getFilename(import.meta.url))
 console.log(isMainModule(import.meta.url))
@@ -20,24 +21,17 @@ await writeToFile('./data1.json', 'wx')
  * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
  * @param {import('fs').Mode | undefined} mode
  */
-async function writeToFile(path, flags = 'wx', mode = 0o666) {
+async function writeToFile(path, data, { flags = 'wx', mode = 0o666 }) {
   let filehandle
 
   try {
     filehandle = await open(path, flags, mode)
 
-    await writeDataToFile(filehandle, {
-      id: 11,
-      first_name: 'John',
-      last_name: 'Peter',
-      email: 'johnpeter@example.com',
-      gender: 'male',
-      ip_address: '181.147.69.70',
-    })
+    await writeDataToFile(filehandle, data)
   } catch (error) {
     if (error.code === 'EEXIST') {
       console.error(`"${path}" already exists`)
-      return
+      return error
     }
 
     throw error
@@ -49,34 +43,14 @@ async function writeToFile(path, flags = 'wx', mode = 0o666) {
 }
 
 /**
- *
+ *q
  * @param {import('fs').PathLike | import('fs/promises').FileHandle} path
- * @param {*} object
+ * @param {string | NodeJS.ArrayBufferView | Iterable<string | NodeJS.ArrayBufferView> | AsyncIterable<string | NodeJS.ArrayBufferView> | import('stream').Stream} object
  */
 export async function writeDataToFile(path, object) {
   try {
-    await writeFile(path, JSON.stringify(object))
+    await writeFile(path, JSON.stringify(object), 'utf-8')
   } catch (error) {
     console.error(error)
-  }
-}
-
-async function openToReadFile(filename, flags = 'r+') {
-  let filehandle
-
-  try {
-    filehandle = await open(filename, flags)
-    const content = await filehandle.readFile({ encoding: 'utf8' })
-    console.log(content)
-  } catch (error) {
-    if (error.code === 'EEXIST') {
-      console.error(`"${filename}" already exists`)
-      return
-    }
-    throw error
-  } finally {
-    if (filehandle) {
-      await filehandle.close()
-    }
   }
 }
