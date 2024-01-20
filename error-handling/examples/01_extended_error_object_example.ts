@@ -46,7 +46,10 @@ export class AppError extends Error {
 
     constructor(name: string, httpCode: HttpCode, description: string, isOperational: boolean) {
       super(description);
-
+    // Set the prototype explicitly only needed if i need to support:
+    //  - node < 6
+    //  - IE < 11
+    //  - ES < 2015
       Object.setPrototypeOf(this, new.target.prototype); // restore prototype chain
 
       this.name = name;
