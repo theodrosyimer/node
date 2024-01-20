@@ -12,7 +12,6 @@ console.log(isMainModule(import.meta.url))
 // using `NODE_PATH` to set the root directory:
 // `NODE_PATH=. node app.js`
 console.log(join(process.env.NODE_PATH ?? ''))
-console.log(join(process.env.NODE_PATH ?? '', 'data.json'))
 
 async function openToReadFile(path, flags = 'r+', mode = 0o666) {
   let filehandle
@@ -35,3 +34,7 @@ async function openToReadFile(path, flags = 'r+', mode = 0o666) {
     }
   }
 }
+
+console.log(
+  await openToReadFile('/Users/mac/Code/refs/js-sandbox/node/data.json'),
+)
