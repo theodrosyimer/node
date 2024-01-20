@@ -31,3 +31,6 @@ dist-ssr
 **/playground.js
 **/*.taskpaper
 **/store.js
+*.txt
+*.json
+!data.json
