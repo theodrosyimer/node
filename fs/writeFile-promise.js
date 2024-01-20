@@ -13,7 +13,7 @@ console.log(join(process.env.NODE_PATH ?? '', 'data.json'))
 
 // Similarly to `fsPromises.readFile` - `fsPromises.writeFile` is a convenience method that performs multiple `write` calls internally to write the buffer passed to it. For performance sensitive code consider using `fs.createWriteStream()` or `filehandle.createWriteStream()`.
 
-await writeToFile('./data1.json', 'wx')
+// await writeToFile('./data1.json', 'wx')
 
 /**
  *
@@ -21,7 +21,7 @@ await writeToFile('./data1.json', 'wx')
  * @param {'a' | 'ax' | 'a+' | 'ax+' | 'as' | 'r' | 'rs' | 'r+' | 'rs+' | 'w' | 'wx' | 'w+' | 'wx+'} flags
  * @param {import('fs').Mode | undefined} mode
  */
-async function writeToFile(path, data, { flags = 'wx', mode = 0o666 }) {
+export async function writeToFile(path, data, { flags = 'wx', mode = 0o666 }) {
   let filehandle
 
   try {
@@ -43,7 +43,7 @@ async function writeToFile(path, data, { flags = 'wx', mode = 0o666 }) {
 }
 
 /**
- *q
+ *
  * @param {import('fs').PathLike | import('fs/promises').FileHandle} path
  * @param {string | NodeJS.ArrayBufferView | Iterable<string | NodeJS.ArrayBufferView> | AsyncIterable<string | NodeJS.ArrayBufferView> | import('stream').Stream} object
  */
