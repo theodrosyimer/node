@@ -106,6 +106,7 @@ async function openWriteStream(path, data, { flags = 'wx', mode = 0o666 }) {
 }
 
 export async function writeStream(filePath, data) {
+  if (!filePath || !data) throw new Error(`Missing arguments!`)
   // set the encodings like this (otherwise it has a raw buffer type):
   const writeStream = createWriteStream(filePath, 'utf-8')
 
