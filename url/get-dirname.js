@@ -29,5 +29,5 @@ getDirname(import.meta.url, ['..', '..', '..'])
 
 getDirname('file:')
 
-console.log(import.meta)
-console.log(getDirname.length)
+// console.log(import.meta)
+// console.log(getDirname.length)
