@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 import fs from 'node:fs'
-import path from 'node:path'
+import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+
+// from create-svelte-app
 
 /** @param {string} dir */
 export function mkdirp(dir) {
@@ -37,10 +40,10 @@ export function copy(from, to, rename = identity) {
 
   if (stats.isDirectory()) {
     fs.readdirSync(from).forEach(file => {
-      copy(path.join(from, file), path.join(to, rename(file)))
+      copy(join(from, file), join(to, rename(file)))
     })
   } else {
-    mkdirp(path.dirname(to))
+    mkdirp(dirname(to))
     fs.copyFileSync(from, to)
   }
 }
