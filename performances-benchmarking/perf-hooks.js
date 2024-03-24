@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { performance, PerformanceObserver } from 'perf_hooks'
 
-import { readCallback } from '../performance-tests/reading-file-methods/read-cb.js'
+import { readCallback } from './read-cb.js'
 import { readStream } from '../stream/readfile-with-async-iterator.js'
 
 async function stream() {
@@ -18,8 +18,8 @@ function callback() {
   performance.measure('readCallback', 'start-benchmarking', 'end-benchmarking')
 }
 
-const performanceObserver = new PerformanceObserver((list) => {
-  list.getEntries().forEach((entry) => {
+const performanceObserver = new PerformanceObserver(list => {
+  list.getEntries().forEach(entry => {
     // logger
     //   .withTag('performance')
     //   .info(`${entry.name} took ${entry.duration.toFixed(2)} ms`)
@@ -28,6 +28,6 @@ const performanceObserver = new PerformanceObserver((list) => {
 })
 performanceObserver.observe({ entryTypes: ['measure'], buffered: true })
 
-await stream()
+stream()
 
 callback()
