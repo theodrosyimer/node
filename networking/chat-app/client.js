@@ -49,7 +49,7 @@ const socket = net.createConnection(
 
       await moveCursor(0, -1)
       await clearLine(0)
-      socket.write(message)
+      socket.write(`${message}`)
     }
 
     ask()
@@ -59,7 +59,7 @@ const socket = net.createConnection(
       await moveCursor(0, -1)
       await clearLine(0)
 
-      console.log(data.toString('utf-8'))
+      console.log(`${data.toString('utf-8')}`)
 
       ask()
     })

@@ -22,7 +22,7 @@ server.on('connection', socket => {
 
   socket.on('data', data => {
     for (let i = 0; i < clients.length; i++) {
-      clients[i].write(data)
+      clients[i].write(`${socket.remotePort}: ${data}`)
     }
   })
 
