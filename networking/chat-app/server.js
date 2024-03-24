@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import net from 'net'
 // import * as readline from 'node:readline/promises'
 // import { stdin as input, stdout as output } from 'node:process'

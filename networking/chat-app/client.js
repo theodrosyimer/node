@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import net from 'net'
 import * as readline from 'node:readline/promises'
 import * as readlineSync from 'node:readline'
@@ -59,8 +58,8 @@ const socket = net.createConnection(
     readlineSync.emitKeypressEvents(process.stdin)
     if (process.stdin.isTTY) process.stdin.setRawMode(true)
 
-    process.stdin.on('keypress', (character, key) => {
-      // console.log('character:', character)
+    process.stdin.on('keypress', (_character, key) => {
+      // console.log('character:', _character)
       // console.log('key:', key)
 
       if (key.name === 'x' && key.ctrl) {
@@ -91,12 +90,6 @@ socket.on('end', () => {
 })
 
 socket.on('close', () => {
-  console.log('You closed your connection!')
-  process.exitCode = 0
-  process.exit()
-})
-
-socket.on('', () => {
   console.log('You closed your connection!')
   process.exitCode = 0
   process.exit()
