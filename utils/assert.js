@@ -2,6 +2,10 @@ export function isNonNullable(value) {
   return value !== null && value !== undefined
 }
 
+export function isArray(value) {
+  return Array.isArray(value)
+}
+
 export function isObject(value) {
   return !Array.isArray(value) && typeof value === 'object' && value !== null
 }
@@ -31,14 +35,14 @@ export function isBigInt(value) {
 }
 
 export function isUndefined(value) {
-  return typeof value === 'undefined'
+  return value === undefined
 }
 
 export function isNull(value) {
   return value === null
 }
 
-export function isPrimitive(value) {
+export function isPrimitiveValue(value) {
   return (
     isString(value) ||
     isNumber(value) ||
@@ -48,4 +52,8 @@ export function isPrimitive(value) {
     isUndefined(value) ||
     isNull(value)
   )
+}
+
+export function isReferenceValue(value) {
+  return isObject(value) || isArray(value)
 }
