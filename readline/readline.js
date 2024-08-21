@@ -26,7 +26,7 @@ async function* generatePrompt() {
       //   content: aiResponse,
       // })
 
-      yiel`\nAI: ${aiResponse}`
+      yield `\nAI: ${aiResponse}`
     }
   } catch (error) {
     // check if it is indeed an `Error` instance
