@@ -10,7 +10,9 @@ export function mkdirp(dir) {
   try {
     fs.mkdirSync(dir, { recursive: true })
   } catch (e) {
-    if (/** @type {any} */ (e).code === 'EEXIST') return
+    if (/** @type {any} */ (e).code === 'EEXIST') {
+      return new Error(e.message)
+    }
     throw e
   }
 }
@@ -54,14 +56,18 @@ export function dist(path) {
 }
 
 /** @type {string} */
-export const package_manager = get_package_manager() || 'npm'
+export const package_manager = getPackageManager() || 'npm'
 
 /**
  * Supports npm, pnpm, Yarn, cnpm, bun and any other package manager that sets the
  * npm_config_user_agent env variable.
  * Thanks to https://github.com/zkochan/packages/tree/main/which-pm-runs for this code!
  */
-function get_package_manager() {
+export function getPackageManager() {
+  // console.log(process.env.npm_config_user_agent)
+  // console.log(process.env.npm_command)
+  // console.log(process.env.npm_execpath)
+
   if (!process.env.npm_config_user_agent) {
     return undefined
   }
@@ -69,5 +75,6 @@ function get_package_manager() {
   const pm_spec = user_agent.split(' ')[0]
   const separator_pos = pm_spec.lastIndexOf('/')
   const name = pm_spec.substring(0, separator_pos)
-  return name === 'npminstall' ? 'cnpm' : name
+
+  return name === 'npminstall' ? 'npm' : name
 }
