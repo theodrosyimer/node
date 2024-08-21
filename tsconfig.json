@@ -9,6 +9,7 @@
       "ESNext",
     ],
     "allowJs": true,
+    "checkJs": true,
     "strict": true,
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
@@ -38,8 +39,8 @@
     "./types"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "**/**/*.ts",
+    "**/**/*.tsx",
     "node_modules/@types/*"
   ],
   "exclude": [
