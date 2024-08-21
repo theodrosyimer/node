@@ -1,0 +1,12 @@
+{
+  "name": "shell",
+  "version": "0.0.0",
+  "main": "run-shell-command.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Theodros Yimer",
+  "license": "MIT",
+  "description": ""
+}
