@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { performance, PerformanceObserver } from 'perf_hooks'
+import { readStream } from 'stream/readfile-with-async-iterator.js'
 
 import { readCallback } from './read-cb.js'
-import { readStream } from '../stream/readfile-with-async-iterator.js'
 
 async function stream() {
   performance.mark('start-benchmarking')
-  await readStream('../data.json')
+  readStream('../data.json')
   performance.mark('end-benchmarking')
   performance.measure('readStream', 'start-benchmarking', 'end-benchmarking')
 }
