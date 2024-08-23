@@ -13,10 +13,10 @@ const ALL_LOGS_PATH = join(
 )
 
 class Pino {
-  instance: Logger
+  static instance: Logger
   constructor() {
-    if (!this.instance) {
-      this.instance = pino(
+    if (!Pino.instance) {
+      Pino.instance = pino(
         pino.transport({
           targets: [
             {
@@ -46,11 +46,13 @@ class Pino {
           ],
         }),
       )
-      this.instance.info('Logger initiated')
+      Pino.instance.info('Pino initiated')
     }
 
     return this
   }
 }
 
-export default new Pino()
+export default function buildPinoMultiService() {
+  return new Pino()
+}

@@ -1,6 +1,21 @@
-import Pino from './pino-multi.js'
+import buildPinoMultiService from './pino-multi.js'
 
-const logger = Pino.instance
+export async function serviceStart(options: Record<any, any>) {
+  // Options include all the running dependencies of the service
+  console.log('starting')
 
-logger.info('my first log attempt')
-logger.error('my first error log attempt')
+  return {
+    async stop() {
+      console.log('stopping')
+      // shut everything down here
+    },
+  }
+}
+
+export function main() {
+  const logger = buildPinoMultiService()
+  logger.info('my first log attempt')
+  logger.error('my first error log attempt')
+}
+
+main()
