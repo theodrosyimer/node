@@ -9,7 +9,7 @@
       "ESNext",
     ],
     "allowJs": true,
-    // "checkJs": true,
+    "checkJs": true,
     "strict": true,
     "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
@@ -40,10 +40,8 @@
   ],
   "include": [
     "**/**/*.ts",
-    "**/**/*.js",
     "**/**/*.tsx",
-    "node_modules/@types/*",
-    "debugging/shape-object-init/shape-object-init.js"
+    "node_modules/@types/*"
   ],
   "exclude": [
     "dist",
