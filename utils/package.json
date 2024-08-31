@@ -8,5 +8,6 @@
   "keywords": [],
   "author": "Theodros Yimer",
   "license": "MIT",
-  "description": ""
+  "description": "",
+  "type": "module"
 }
