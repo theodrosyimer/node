@@ -1,12 +1,12 @@
 import { buildSomething } from './shape-object-init.js'
 
-const SomethingIsError = Symbol('SomethingIsError')
+const kSomethingIsError = Symbol('kSomethingIsError')
 
 function SomethingBase(request, reply, log) {
   this.request = request
   this.reply = reply
   this.log = log
-  this[SomethingIsError] = false
+  this[kSomethingIsError] = false
   return {}
 }
 
