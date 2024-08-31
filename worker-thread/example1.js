@@ -1,8 +1,11 @@
 import { fileURLToPath } from 'url'
 import { Worker, isMainThread, parentPort, workerData } from 'worker_threads'
 
+/**
+ * @type {(script: any) => Promise<any>}
+ */
 // eslint-disable-next-line import/no-mutable-exports
-export let parseAsync = null
+export let parseAsync
 if (isMainThread) {
   parseAsync = function (script) {
     return new Promise((resolve, reject) => {
@@ -19,7 +22,8 @@ if (isMainThread) {
     })
   }
 } else {
+  // @ts-ignore
   const { parse } = import('some-other-parsing-library')
   const script = workerData
-  parentPort.postMessage(parse(script))
+  parentPort?.postMessage(parse(script))
 }
