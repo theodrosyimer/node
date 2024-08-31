@@ -15,6 +15,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
@@ -43,7 +44,6 @@
     "**/**/*.js",
     "**/**/*.tsx",
     "node_modules/@types/*",
-    "debugging/shape-object-init/shape-object-init.js"
   ],
   "exclude": [
     "dist",
