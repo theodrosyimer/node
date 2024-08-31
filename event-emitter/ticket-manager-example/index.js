@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
+import { addLogDelimitation } from 'utils/inspect.js'
+
 import { DbService } from './db.service.js'
 import { emailService } from './email.service.js'
 import { paymentService } from './payment.service.js'
 import { TicketManager } from './ticket-manager.js'
-import { addLogDelimitation } from '../../utils/utils.js'
 
 const ticketManager = new TicketManager(2)
 
