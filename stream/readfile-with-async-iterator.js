@@ -21,10 +21,10 @@ if (process.argv[1] === modulePath) {
   const filePath = process.argv[2] ?? modulePath
 
   readStream(filePath).catch(err => {
-    if (err instanceof Error) {
-      console.error(err)
-    }
+    console.error(err)
+    process.exit(1)
   })
 }
 
-export {}
+console.log('[modulePath]', modulePath)
+console.log('[process.argv[1]]', process.argv)
