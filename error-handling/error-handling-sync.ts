@@ -1,5 +1,4 @@
-import { maybeTrueOrFalse } from '../randomizer.js'
-
+const maybeTrueOrFalse = () => Math.random() > 0.5
 // ///////////////////////////////////////
 
 /* Using an Object to return an error */

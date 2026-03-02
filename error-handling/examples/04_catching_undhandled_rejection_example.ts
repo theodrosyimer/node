@@ -1,5 +1,5 @@
 const DAL = {
-  getUserById: (id) => {
+  getUserById: (id: number) => {
     return new Promise((resolve, reject) => {
       resolve({ id: 1, isAlive: false })
     })

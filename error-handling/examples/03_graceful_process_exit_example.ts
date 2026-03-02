@@ -1,10 +1,13 @@
+import { logger } from '../../process/console-tty.js'
+import type { errorManagement } from '../error-management.ts'
+
 // Assuming developers mark known operational errors with error.isOperational=true
 process.on('uncaughtException', (error: Error) => {
   errorManagement.handler.handleError(error)
   if (!errorManagement.handler.isTrustedError(error)) process.exit(1)
 })
 
-export class AppError extends Error {
+export class DoaminError extends Error {
   public readonly isOperational: boolean
 
   constructor(description: string, isOperational: boolean) {
@@ -24,7 +27,7 @@ class ErrorHandler {
   }
 
   public isTrustedError(error: Error) {
-    if (error instanceof AppError) {
+    if (error instanceof DoaminError) {
       return error.isOperational
     }
     return false

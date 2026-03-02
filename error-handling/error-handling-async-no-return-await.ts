@@ -1,5 +1,5 @@
-import { pass, fail } from '../promises/promises.ts'
 import { setTimeout as sleep } from 'timers/promises'
+import { fail } from '../promises/promises.ts'
 
 async function dbClient() {
   await fail('This is an error from "dbClient()"', 100)
