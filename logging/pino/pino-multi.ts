@@ -4,13 +4,10 @@ import { fileURLToPath } from 'url'
 
 const ERROR_LOGS_PATH = join(
   dirname(fileURLToPath(import.meta.url)),
-  'logs/all',
+  'logs/errors'
 )
 
-const ALL_LOGS_PATH = join(
-  dirname(fileURLToPath(import.meta.url)),
-  'logs/errors',
-)
+const ALL_LOGS_PATH = join(dirname(fileURLToPath(import.meta.url)), 'logs/all')
 
 class Pino {
   static instance: Logger
@@ -24,7 +21,7 @@ class Pino {
               level: 'info',
               options: {
                 mkdir: true,
-                destination: ERROR_LOGS_PATH,
+                destination: ALL_LOGS_PATH,
               },
             },
             {
@@ -32,19 +29,15 @@ class Pino {
               level: 'error',
               options: {
                 mkdir: true,
-                destination: ALL_LOGS_PATH,
+                destination: ERROR_LOGS_PATH,
               },
             },
             {
               target: 'pino-pretty',
-              level: 'info',
-              // options: {
-              //   mkdir: true,
-              //   destination: ALL_LOGS_PATH,
-              // },
+              level: 'debug',
             },
           ],
-        }),
+        })
       )
       Pino.instance.info('Pino initiated')
     }
