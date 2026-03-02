@@ -56,11 +56,13 @@ import { z } from 'zod'
  * }
  * ```
  */
-function createValidator<
+export function createValidator<
   TSchema extends z.Schema,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   HandlerFn extends (input: z.output<TSchema>) => any,
-  R extends ReturnType<HandlerFn>,
+  R extends ReturnType<HandlerFn>
 >(schema: TSchema, handle: HandlerFn) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-return
   return (input: unknown): R => handle(schema.parse(input))
 }
 
@@ -76,7 +78,6 @@ const validateUser = createValidator(userSchema, input => {
   // do whatever you want with the input
   console.log(input)
   //          ^?
-
   return input
 })
 
