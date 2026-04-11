@@ -1,0 +1,14 @@
+{
+  "size": 1024,
+  "atime": "2024-06-01T12:00:00.000Z",
+  "mtime": "2024-06-01T12:00:00.000Z",
+  "ctime": "2024-06-01T12:00:00.000Z",
+  "birthtime": "2024-06-01T12:00:00.000Z",
+  "isFile": true,
+  "isDirectory": false,
+  "isSymbolicLink": false,
+  "isBlockDevice": false,
+  "isCharacterDevice": false,
+  "isFIFO": false,
+  "isSocket": false
+}

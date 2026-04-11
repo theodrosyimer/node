@@ -6,11 +6,11 @@ import { fileURLToPath } from 'url'
 /**
  * Check if a file exists
  * @async
- * @param {string} p path to evaluate
+ * @param path path to evaluate
  */
-async function exists(p) {
+async function exists(path: string): Promise<boolean> {
   try {
-    await access(p)
+    await access(path)
     return true
   } catch {
     return false
