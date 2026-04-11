@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "ts:check": "tsc --noEmit --pretty",
+    "ts:watch": "tsc --noEmit --pretty --watch"
   },
   "keywords": [],
   "author": "Theodros Yimer",
@@ -12,6 +16,8 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^25.2.3",
+    "prettier": "^3.8.1",
+    "prettier-plugin-pkg": "^0.21.2",
     "typescript": "^5.9.3"
   }
 }
