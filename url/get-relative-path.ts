@@ -22,7 +22,7 @@ function getRelativePath(url: URL | string) {
 // }
 
 function isRelative(input: unknown) {
-  const reg = /^(\/.+)+(\#.+)?(\?.+=.+)?/
+  const reg = /^(\/[a-zA-Z0-9\$-_\.\+!\*'\(\),]+)+(\#.+)?(\?.+=.+)?/
   if (typeof input !== 'string') return false
   return reg.test(input)
 }
